@@ -1,16 +1,29 @@
 import React from "react";
+import styled from "@emotion/styled";
 
-export const List = (props) => {
+const ListGroup = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
 
-  const users = props.users.filter((u) =>
-  u.toLowerCase().includes(props.search.toLowerCase()) 
+const ListGroupItem = styled.li`
+  font-weight: 600;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #5d99db;
+  border-radius: 10px;
+`;
+export const List = ({dataUsers, search}) => {
+  const users = dataUsers.filter((u) =>
+    u.toLowerCase().includes(search.toLowerCase())
   );
   return (
-    <ul className="list-group">
-      {users.map((u, idx) => (
-          <li className="list-group-item" key={idx}>{u}</li>
-          
-      ))}
-    </ul>
+    <>
+      <ListGroup>
+        {users.map((name, idx) => (
+          <ListGroupItem key={idx}>{name}</ListGroupItem>
+        ))}
+      </ListGroup>
+    </>
   );
 };

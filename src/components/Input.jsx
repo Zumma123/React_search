@@ -1,14 +1,21 @@
 import React from "react";
+import { css } from "@emotion/css";
 
-export const Input = (props) => {
+const size = "10px";
 
-  return <>
+export const Input = ({search, handleChange}) => {
+  return (
+    <>
       <input
-          type="text"
-          placeholder="Search..."
-          style={{ marginBottom: 20, padding: 10 }}
-          onChange={props.handleChange}
-          defaultValue={props.search}
-        />
-          </>;
+        className={css`
+          padding: ${size};
+          margin-bottom: ${size};
+        `}
+        type="text"
+        placeholder="Search..."
+        onChangeCapture={handleChange}
+        defaultValue={search}
+      />
+    </>
+  );
 };
